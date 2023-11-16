@@ -16,7 +16,7 @@ try:
 
     cur.execute("CREATE TABLE IF NOT EXISTS Movimentacao (id_mov INT PRIMARY KEY, data DATE, tipo VARCHAR(50), id_emb INT, FOREIGN KEY (id_emb) REFERENCES Embarcacoes (id_emb));")
 
-    cur.execute("CREATE TABLE IF NOT EXISTS Movimentacao_Empregados (id_mov INT, id_emp INT, FOREIGN KEY (id_mov) REFERENCES Movimentacao (id_mov), FOREIGN KEY (id_emp) REFERENCES Empregados (id_emp));")
+    cur.execute("CREATE TABLE IF NOT EXISTS Movimentacao_Empregados (id_mov INT, id_emp INT, PRIMARY KEY (id_mov, id_emp), FOREIGN KEY (id_mov) REFERENCES Movimentacao (id_mov), FOREIGN KEY (id_emp) REFERENCES Empregados (id_emp));")
 
     conn.commit()
     
